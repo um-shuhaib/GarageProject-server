@@ -8,6 +8,11 @@ class Customer(models.Model):
     added_date=models.DateField(auto_now_add=True)
     image=models.ImageField(upload_to="media")
 
+    def total_amount(self):
+        services=Service.objects.filter(customer=self)
+        total = sum([service.amount for service in services])
+        return total
+
     def __str__(self):
         return self.customer_name
 

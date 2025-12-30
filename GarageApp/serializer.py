@@ -2,6 +2,7 @@ from rest_framework import serializers
 from GarageApp.models import Customer,Service
 
 class CustomerSerialiser(serializers.ModelSerializer):
+    total_amount=serializers.FloatField(read_only=True)
     id=serializers.IntegerField(read_only=True)
     class Meta:
         model= Customer
